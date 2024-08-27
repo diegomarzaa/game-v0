@@ -97,23 +97,23 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>Improved Clicks Per Minute Game</h1>
-        <p>Click as fast as you can in 10 seconds!</p>
+        <h1>Reto de los Clicks en 10 segundos</h1>
+        <p>¡Haz click lo más rápido que puedas!</p>
         <div id="timer">10</div>
         <button id="clickButton" disabled>Click me!</button>
         <div id="score">Clicks: 0</div>
         <div id="finalScore"></div>
         <input type="text" id="nameInput" placeholder="Enter your name" style="display: none;">
-        <button id="startButton">Start Game</button>
+        <button id="startButton">Empezar</button>
         
         <div id="highScores">
-            <h2>High Scores</h2>
+            <h2>Puntuaciones Máximas</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Score</th>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Puntuación</th>
                     </tr>
                 </thead>
                 <tbody id="highScoresBody">
@@ -217,6 +217,12 @@
 
             updateHighScores();
         });
+
+        // Prevent double-clicking on the screen (phones)
+        document.addEventListener('dblclick', function(event) {
+            event.preventDefault(); // Prevents the default double-click action
+        });
+
     </script>
 </body>
 </html>
