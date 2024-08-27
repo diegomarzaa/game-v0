@@ -6,6 +6,10 @@
     <title>Improved Clicks Per Minute Game with High Scores</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        .disable-dbl-tap-zoom {
+            touch-action: manipulation;
+        }
+
         body {
             display: flex;
             flex-direction: column;
@@ -100,7 +104,7 @@
         <h1>Reto de los Clicks en 10 segundos</h1>
         <p>¡Haz click lo más rápido que puedas!</p>
         <div id="timer">10</div>
-        <button id="clickButton" disabled>Click me!</button>
+        <button class="disable-dbl-tap-zoom" id="clickButton" disabled>Click me!</button>
         <div id="score">Clicks: 0</div>
         <div id="finalScore"></div>
         <input type="text" id="nameInput" placeholder="Enter your name" style="display: none;">
@@ -216,11 +220,6 @@
             });
 
             updateHighScores();
-        });
-
-        // Prevent double-clicking on the screen (phones)
-        document.addEventListener('dblclick', function(event) {
-            event.preventDefault(); // Prevents the default double-click action
         });
 
     </script>
