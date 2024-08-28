@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improved Clicks Per Minute Game with High Scores</title>
+    <title>Jueguito de los Clicks</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
@@ -18,7 +18,7 @@
         <button class="disable-dbl-tap-zoom" id="clickButton" disabled>Click me!</button>
         <div id="score">Clicks: 0</div>
         <div id="finalScore"></div>
-        <input type="text" id="nameInput" placeholder="Enter your name" style="display: none;">
+        <input type="text" id="nameInput" placeholder="Introduce tu Nombre" style="display: none;">
         <button id="startButton">Empezar</button>
         
         <div id="highScores">
@@ -36,5 +36,26 @@
             </table>
         </div>
     </div>
+
+    <!-- Consent message for EU regulations with Privacy Policy link
+    <div id="consentMessage" style="position: fixed; bottom: 0; background-color: rgba(0, 0, 0, 0.8); color: white; width: 100%; padding: 10px; text-align: center; display: none;">
+        We use cookies to personalize content and ads, to provide social media features, and to analyze our traffic. <a href="/privacy-policy" target="_blank" style="color: #ffd700;">Learn more</a>.
+        <button id="acceptCookies" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; cursor: pointer;">Accept</button>
+    </div>
+
+    <script>
+        // Show consent message if cookies have not been accepted
+        $(document).ready(function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                $('#consentMessage').show();
+            }
+
+            $('#acceptCookies').click(function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                $('#consentMessage').hide();
+            });
+        });
+    </script> -->
+
 </body>
 </html>
