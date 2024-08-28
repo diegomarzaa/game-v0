@@ -31,6 +31,10 @@ def index():
 def info():
     return render_template('info.html')
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
 @app.route('/submit_score', methods=['POST'])
 def submit_score():
     data = request.json
