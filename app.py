@@ -4,22 +4,26 @@ from sqlalchemy import desc
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///highscores.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///highscores.db'       # Crear base de datos en path ./highscores.db
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class HighScore(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    # Crear tabla HighScore con columnas id, name y score
+    id = db.Column(db.Integer, primary_key=True)    # Primary key: id único para cada registro
+    name = db.Column(db.String(50), nullable=False) # nullable=False: No puede ser nulo
     score = db.Column(db.Float, nullable=False)
 
     def to_dict(self):
         return {'name': self.name, 'score': self.score}
+    
+    # def __repr__(self):
+    #     return f'<HighScore {self.name} - {self.score}>'
 
 with app.app_context():
     db.create_all()
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])    # Puede recibir peticiones POST y GET
 def index():
     return render_template('index.html')    # Visualizar el archivo index.html
 
@@ -56,4 +60,4 @@ def get_high_scores():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
